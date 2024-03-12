@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRef, useState } from 'react';
 import { useAuth } from '@/app/contexts/AuthContext';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Login: React.FC = () => {
   const [error, setError] = useState<string>('');
@@ -24,6 +25,11 @@ const Login: React.FC = () => {
 
       await login(emailRef.current.value, passwordRef.current.value);
       window.location.href = '/';
+      // To log all cookies
+console.log(Cookies.get());
+
+// To log a specific cookie
+console.log(Cookies.get('cookie_name'));
      // closeModal();
     } catch (err) {
       if (err instanceof Error) {
